@@ -7,6 +7,7 @@ namespace P03_FootballBetting.Data.Models
     {
         public User()
         {
+
             Bets = new HashSet<Bet>();
         }
         [Key]

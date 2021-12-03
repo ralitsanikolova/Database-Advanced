@@ -7,10 +7,14 @@ namespace P03_FootballBetting.Data.Models
     {
         public Team()
         {
+
             HomeGames = new HashSet<Game>();
+
             AwayGames = new HashSet<Game>();
+
             Players = new HashSet<Player>();
         }
+
         [Key]
         public int TeamId { get; set; }
         public string Name { get; set; }

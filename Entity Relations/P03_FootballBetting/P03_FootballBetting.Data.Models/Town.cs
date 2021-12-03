@@ -7,6 +7,7 @@ namespace P03_FootballBetting.Data.Models
     {
         public Town()
         {
+
             Teams = new HashSet<Team>();
         }
         [Key]

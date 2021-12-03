@@ -8,7 +8,9 @@ namespace P03_FootballBetting.Data.Models
     {
         public Game()
         {
+
             PlayerStatistics = new HashSet<PlayerStatistic>();
+
             Bets = new HashSet<Bet>();
         }
         [Key]
