@@ -6,28 +6,11 @@ namespace P03_FootballBetting.Data
     {
         static void Main(string[] args)
         {
+            var context = new FootballBettingContext();
 
-            var host = CreateWebHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    var context = services.GetRequiredService<FootballBettingContext>();
-
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("An error occurred while seeding the database.");
-                }
-            }
-            host.Run();
-        }
-
-        private static object CreateWebHostBuilder(string[] args)
-        {
-            throw new NotImplementedException();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
         }
     }
 }
-}
+
