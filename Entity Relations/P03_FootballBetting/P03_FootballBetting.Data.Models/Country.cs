@@ -7,12 +7,12 @@ namespace P03_FootballBetting.Data.Models
     {
         public Country()
         {
-
             Towns = new HashSet<Town>();
         }
 
         [Key]
         public int CountryId { get; set; }
+
         public string Name { get; set; }
 
         #region Relations

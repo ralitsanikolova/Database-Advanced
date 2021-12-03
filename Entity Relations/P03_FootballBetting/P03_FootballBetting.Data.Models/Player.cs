@@ -7,15 +7,20 @@ namespace P03_FootballBetting.Data.Models
     {
         public Player()
         {
-
             PlayerStatistics = new HashSet<PlayerStatistic>();
         }
+
         [Key]
         public int PlayerId { get; set; }
+
         public string Name { get; set; }
+
         public int SquadNumber { get; set; }
+
         public int TeamId { get; set; }
+
         public int PositionId { get; set; }
+
         public bool IsInjured { get; set; }
 
         #region Relations

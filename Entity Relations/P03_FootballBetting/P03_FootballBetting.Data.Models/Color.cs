@@ -7,13 +7,13 @@ namespace P03_FootballBetting.Data.Models
     {
         public Color()
         {
-
             PrimaryKitTeams = new HashSet<Team>();
-
             SecondaryKitTeams = new HashSet<Team>();
         }
+
         [Key]
         public int ColorId { get; set; }
+
         public string Name { get; set; }
 
         #region Relations

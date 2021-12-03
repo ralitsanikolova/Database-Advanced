@@ -3,9 +3,13 @@
     public class PlayerStatistic
     {
         public int GameId { get; set; }
+
         public int PlayerId { get; set; }
+
         public int ScoredGoals { get; set; }
+
         public string Assists { get; set; }
+
         public double MinutesPlayed { get; set; }
 
         #region Relation

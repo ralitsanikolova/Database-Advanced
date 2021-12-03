@@ -7,22 +7,26 @@ namespace P03_FootballBetting.Data.Models
     {
         public Team()
         {
-
             HomeGames = new HashSet<Game>();
-
             AwayGames = new HashSet<Game>();
-
             Players = new HashSet<Player>();
         }
 
         [Key]
         public int TeamId { get; set; }
+
         public string Name { get; set; }
+
         public string logoUrl { get; set; }
+
         public string Initials { get; set; }
+
         public double Budget { get; set; }
+
         public int PrimaryKitColorId { get; set; }
+
         public int SecondaryKitColorId { get; set; }
+
         public int TownId { get; set; }
 
         #region Relations
