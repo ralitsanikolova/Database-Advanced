@@ -7,10 +7,15 @@ namespace P01_StudentSystem.Data.Models
     {
         [Key]
         public string HomeworkId { get; set; }
+
         public string Content { get; set; }
+
         public ContentType ContentType { get; set; }
+
         public DateTime SubmissionTime { get; set; }
+
         public string StudentId { get; set; }
+
         public string CourseId { get; set; }
 
         #region Relations

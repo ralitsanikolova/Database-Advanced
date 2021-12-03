@@ -3,6 +3,7 @@
     class StudentCourse
     {
         public string StudentId { get; set; }
+
         public string CourseId { get; set; }
 
         #region Relations

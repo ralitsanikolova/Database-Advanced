@@ -21,11 +21,14 @@ namespace P01_StudentSystem.Data.Models
 
         [StringLength(10, MinimumLength = 10)]
         public string PhoneNumber { get; set; }
+
         public DateTime RegistretedOn { get; set; }
+
         public DateTime? Birthday { get; set; }
 
         #region Relations
         public ICollection<Homework> Homeworks { get; set; }
+
         public ICollection<StudentCourse> Courses { get; set; }
         #endregion
     }
