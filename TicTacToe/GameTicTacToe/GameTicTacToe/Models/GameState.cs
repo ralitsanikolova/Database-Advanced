@@ -2,9 +2,9 @@
 {
     public enum GameState
     {
-        xWins,
-        oWins,
-        draw,
-        stillPlaying
+        XWins,
+        OWins,
+        Draw,
+        StillPlaying,
     }
 }

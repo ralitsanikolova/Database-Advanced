@@ -1,7 +1,7 @@
 ﻿@using Models;
-@page "/tictactoe"
+@page "/tic-tac-toe"
 
-<div class="contentAlign">
+<div class="content-align">
 	<div class="float-container">
 		<div class="float-child">
 			<h3>@status</h3>
@@ -10,7 +10,6 @@
 			<button class="button" @onclick="Reset">Reset Game</button>
 		</div>
 	</div>
-
 	<br />
 	<div class="board">
 		@for (int i = 0; i < 9; i++)
@@ -50,8 +49,8 @@
 		{
 			' ', ' ', ' ',
 			' ', ' ', ' ',
-			' ', ' ', ' '
-		};
+			' ', ' ', ' ',
+						};
 
 		xIsFirst = true;
 
@@ -65,7 +64,7 @@
 			return;
 		}
 
-		bool isGameFiniched = Game.CalculateGameStatus(values) != GameState.stillPlaying;
+		bool isGameFiniched = Game.CalculateGameStatus(values) != GameState.StillPlaying;
 		if (isGameFiniched)
 		{
 			return;
@@ -85,60 +84,24 @@
 
 		switch (gameStatus)
 		{
-			case GameState.xWins:
+			case GameState.XWins:
 				this.status = "Winner is X";
 				this.countX += 1;
 				break;
-			case GameState.oWins:
-				this.status = "Winner is  O";
+			case GameState.OWins:
+				this.status = "Winner is O";
 				this.countO += 1;
 				break;
-			case GameState.draw:
+			case GameState.Draw:
 				this.status = "Draw !";
 				break;
-			case GameState.stillPlaying:
+			case GameState.StillPlaying:
 				char nextPlayer = xIsFirst ? 'X' : 'O';
 				this.status = $"Next player: {nextPlayer}";
 				break;
 			default:
-				break;
-
+				throw new Exception($"Something went wrong. Please try again.");
 		}
 	}
 }
 
-<style scoped>
-	.board {
-		display: grid;
-		grid-template-columns: auto auto auto;
-		background-color: #c9a0dc;
-		padding: 10px;
-		width: 300px;
-		height: 300px;
-		border-radius: 10%;
-		top: 50%;
-		left: 50%;
-	}
-
-	.button {
-		background-color: white;
-		color: black;
-		border: 2px solid #C8A2C8
-	}
-
-	.button:hover {
-		background-color: #C8A2C8;
-		color: white;
-	}
-
-	.contentAlign {
-		max-width: 500px;
-		margin: auto;
-	}
-
-	.float-child {
-		width: 41%;
-		float: left;
-		padding: 20px;
-	}
-</style>
