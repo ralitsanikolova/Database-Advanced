@@ -1,0 +1,9 @@
+﻿<div class="square" @onclick="@ClickHandler">@value</div>
+
+@code {
+    [Parameter]
+    public char value { get; set; }
+
+    [Parameter]
+    public EventCallback ClickHandler { get; set; }
+}

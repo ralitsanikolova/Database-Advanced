@@ -1,0 +1,107 @@
+﻿@using Models;
+@page "/tic-tac-toe"
+
+<div class="content-align">
+	<div class="float-container">
+		<div class="float-child">
+			<h3>@status</h3>
+		</div>
+		<div class="float-child">
+			<button class="button" @onclick="Reset">Reset Game</button>
+		</div>
+	</div>
+	<br />
+	<div class="board">
+		@for (int i = 0; i < 9; i++)
+		{
+			int squareNumber = i;
+			<Square @key=squareNumber
+					value=values[squareNumber]
+					ClickHandler="@(() => HandleClick(squareNumber))" />
+		}
+	</div>
+	<br />
+	<h4>Current Score: O @countO || @countX X</h4>
+</div>
+
+@code {
+	private bool xIsFirst;
+
+	protected string status;
+	protected int countX;
+	protected int countO;
+
+	protected char[] values = new char[9];
+
+	public void Reset()
+	{
+		this.PopulateBoard();
+	}
+
+	protected override void OnInitialized()
+	{
+		this.PopulateBoard();
+	}
+
+	protected void PopulateBoard()
+	{
+		values = new char[9]
+		{
+			' ', ' ', ' ',
+			' ', ' ', ' ',
+			' ', ' ', ' ',
+						};
+
+		xIsFirst = true;
+
+		this.CalculateStatus();
+	}
+
+	protected void HandleClick(int i)
+	{
+		if (values[i] != ' ')
+		{
+			return;
+		}
+
+		bool isGameFiniched = Game.CalculateGameStatus(values) != GameState.StillPlaying;
+		if (isGameFiniched)
+		{
+			return;
+		}
+
+		bool xToPlay = xIsFirst;
+
+		values[i] = xToPlay ? 'X' : 'O';
+		xIsFirst = !xToPlay;
+
+		this.CalculateStatus();
+	}
+
+	private void CalculateStatus()
+	{
+		var gameStatus = Game.CalculateGameStatus(values);
+
+		switch (gameStatus)
+		{
+			case GameState.XWins:
+				this.status = "Winner is X";
+				this.countX += 1;
+				break;
+			case GameState.OWins:
+				this.status = "Winner is O";
+				this.countO += 1;
+				break;
+			case GameState.Draw:
+				this.status = "Draw !";
+				break;
+			case GameState.StillPlaying:
+				char nextPlayer = xIsFirst ? 'X' : 'O';
+				this.status = $"Next player: {nextPlayer}";
+				break;
+			default:
+				throw new Exception($"Something went wrong. Please try again.");
+		}
+	}
+}
+
